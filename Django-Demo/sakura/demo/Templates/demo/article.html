@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{article.title}}</title>
+</head>
+<body>
+<div style="align-content: center;text-align: left;">
+    <h1>{{article.title}} 
+    <span style="font-size: 15px"><a href="{% url 'blog:page' article.id %}">修改文章</a></span></h1>
+    <!-- &nbsp <small><a href="{% url 'blog:page' article.id %}">修改文章</a></small> -->
+    <br>
+    <div style="font-size: 20px;align-content: center;">{{article.content}}</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>编辑</title>
+</head>
+<body>
+<div class="container">
+    <form action="{% url 'blog:action' %}" method="post" class="form-group">
+        <input type="hidden" name="id" value="{{article.id}}">
+        {% csrf_token%}
+        {% if article %}  
+        <label>文章标题  
+            <input class="form-control" type="text" name="title" value="{{ article.title }}"/>  
+        </label>  
+        <p></p>  
+        <label>文章内容  
+            <input class="form-control" type="text" name="content" value="{{ article.content }}"/>  
+        </label>  
+        {% else %}  
+        <input type="hidden" name="id" value="0">
+        <label>文章标题</label>
+        <input type="text" name="title" class="form-control">
+        <br/>
+        <label>文章内容</label>
+        <!-- <input type="textarea" name="content" class="form-control"> -->
+        <textarea class="form-control" rows="7" name="content" style="margin-top: 0px; margin-bottom: 0px; height: 130px;"></textarea>
+
+        <br/>
+        {% endif %}  
+    <!--     <input type="submit" name="提 交"> -->
+    <br>
+        <button class="btn btn-default" type="submit">提交</button>
+    </form>
+</div>
+</body>
+</html>
